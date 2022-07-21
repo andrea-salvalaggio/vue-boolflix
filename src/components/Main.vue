@@ -1,23 +1,26 @@
 <template>
     <div>
-        Main
-        <DiscElement v-for="(disc, index) in discs" :key="index"/>
+        <!-- Stampami DiscElement tante volte quante sono gli elementi dentro discs -->
+        <!-- Passo a DiscElement il singolo elemento di discs -->
+        <!-- discs è un array di oggetti, disc è un oggetto -->
+        <MovieElement class="container" v-for="(movie, index) in movies" :key="index" :movie="movie"/>
     </div>
 </template>
 
 <script>
-import DiscElement from './DiscElement.vue'
+import MovieElement from './MovieElement.vue'
 
 export default {
     props:{
-        'discs': {
+        // Sono i dati che mi arrivano da App.vue
+        'movies': {
             type: Array,
             required: true,
         }
     },
 
     components:{
-        DiscElement,
+        MovieElement,
     },
 }
 </script>
