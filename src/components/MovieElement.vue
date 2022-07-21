@@ -1,6 +1,10 @@
 <template>
     <div>
-        <h1> {{ movie.title }} </h1>
+        <h4> {{ movie.title }} </h4>
+        <h5> {{ movie.original_title }} </h5>
+        <p> {{ movie.original_language}}</p>
+        <p> {{ movie.vote_average }} </p>
+        <hr>
     </div>
 </template>
 
