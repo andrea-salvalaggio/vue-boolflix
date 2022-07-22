@@ -1,8 +1,8 @@
 <template>
     <div>
-        <!-- Stampami DiscElement tante volte quante sono gli elementi dentro discs -->
-        <!-- Passo a DiscElement il singolo elemento di discs -->
-        <!-- discs è un array di oggetti, disc è un oggetto -->
+        <!-- Stampami MovieElement tante volte quante sono gli elementi dentro movies -->
+        <!-- Passo a MovieElement il singolo elemento di movies -->
+        <!-- movies  è un array di oggetti, movie è un oggetto -->
         <MovieElement class="container" v-for="(movie, index) in movies" :key="index" :movie="movie"/>
     </div>
 </template>

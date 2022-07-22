@@ -1,15 +1,24 @@
 <template>
     <div>
-        <h4> {{ movie.title }} </h4>
-        <h5> {{ movie.original_title }} </h5>
-        <p> {{ movie.original_language}}</p>
-        <p> {{ movie.vote_average }} </p>
-        <hr>
+        <ul class="list-group mb-3">
+            <li class="list-group-item"> {{ movie.title }} </li>
+            <li class="list-group-item"> {{ movie.original_title }} </li>
+            <li class="list-group-item"> {{ movie.original_language }} </li>
+            <li class="list-group-item"> {{ movie.vote_average }} </li>
+        </ul>
     </div>
 </template>
 
 <script>
+import LangFlag from 'vue-lang-code-flags';
+
 export default {
+
+    components: {
+    LangFlag,
+    LangFlag
+},
+  
     props:{
         // Sono i dati che mi arrivano da Main.vue
         'movie': {
@@ -17,7 +26,12 @@ export default {
             required: true,
         }
     },
+
+    methods: {
+
+    },
 }
+
 </script>
 
 <style>

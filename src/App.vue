@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- App rimane in ascolto del segnale startSearch del componente Header e quando avviene richiamo la funzione getDiscs -->
+    <!-- App rimane in ascolto del segnale startSearch del componente Header e quando avviene richiamo la funzione getMovies -->
     <Header @startSearch="getMovies"/>
     <!-- Passo i risultati a Main tramite props -->
     <Main :movies="movies"/>
