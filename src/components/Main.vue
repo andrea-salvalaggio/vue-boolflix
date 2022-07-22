@@ -11,7 +11,7 @@
 import MovieElement from './MovieElement.vue'
 
 export default {
-    props:{
+    props: {
         // Sono i dati che mi arrivano da App.vue
         'movies': {
             type: Array,
@@ -19,7 +19,7 @@ export default {
         }
     },
 
-    components:{
+    components: {
         MovieElement,
     },
 }

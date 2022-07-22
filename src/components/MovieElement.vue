@@ -3,7 +3,7 @@
         <ul class="list-group mb-3">
             <li class="list-group-item"> {{ movie.title }} </li>
             <li class="list-group-item"> {{ movie.original_title }} </li>
-            <li class="list-group-item"> {{ movie.original_language }} </li>
+            <li class="list-group-item"> <lang-flag :iso="movie.original_language"/> </li>
             <li class="list-group-item"> {{ movie.vote_average }} </li>
         </ul>
     </div>
@@ -15,11 +15,10 @@ import LangFlag from 'vue-lang-code-flags';
 export default {
 
     components: {
-    LangFlag,
-    LangFlag
-},
+        LangFlag,
+    },
   
-    props:{
+    props: {
         // Sono i dati che mi arrivano da Main.vue
         'movie': {
             type: Object,
