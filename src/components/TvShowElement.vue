@@ -1,10 +1,10 @@
 <template>
-    <div>
+  <div>
         <ul class="list-group mb-3">
-            <li class="list-group-item"> {{ movie.title }} </li>
-            <li class="list-group-item"> {{ movie.original_title }} </li>
-            <li class="list-group-item"> <lang-flag :iso="movie.original_language"/> </li>
-            <li class="list-group-item"> {{ movie.vote_average }} </li>
+            <li class="list-group-item"> {{ tvshow.name }} </li>
+            <li class="list-group-item"> {{ tvshow.original_name }} </li>
+            <li class="list-group-item"> <lang-flag :iso="tvshow.original_language"/> </li>
+            <li class="list-group-item"> {{ tvshow.vote_average }} </li>
         </ul>
     </div>
 </template>
@@ -17,17 +17,16 @@ export default {
     components: {
         LangFlag,
     },
-  
+
     props: {
         // Sono i dati che mi arrivano da Main.vue
-        'movie': {
+        'tvshow': {
             type: Object,
             required: true,
         }
     },
-    
-}
 
+}
 </script>
 
 <style>

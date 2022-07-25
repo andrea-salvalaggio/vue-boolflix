@@ -3,7 +3,7 @@
     <!-- App rimane in ascolto del segnale startSearch del componente Header e quando avviene richiamo la funzione getMovies -->
     <Header @startSearch="getMovies"/>
     <!-- Passo i risultati a Main tramite props -->
-    <Main :movies="movies"/>
+    <Main :movies="movies" :tvshows="tvshows"/>
     
   </div>
 </template>
@@ -23,7 +23,10 @@ export default {
   data: function() {
     return{
       movies: [],
-      apiUrl: 'https://api.themoviedb.org/3/search/movie/?api_key=eb7d21fbf7495f073ee3484c1c5e2b66&query=',
+      apiUrlMovies: 'https://api.themoviedb.org/3/search/movie/?api_key=eb7d21fbf7495f073ee3484c1c5e2b66&query=',
+
+      tvshows: [],
+      apiUrlShows: 'https://api.themoviedb.org/3/search/tv?api_key=eb7d21fbf7495f073ee3484c1c5e2b66&query=',
     }
   },
 
@@ -32,16 +35,32 @@ export default {
       // Questa funzione viene chiamata quando avviene l'evento startSearch e riceve come parametro il testo che l'utente ha scritto nell'input
       console.log(searchText);
       // Faccio partire la chiamata axios
-      axios.get(this.apiUrl + searchText)
+      axios.get(this.apiUrlMovies + searchText)
         .then((result) => {
           console.log(result.data.results);
-          // Assegno il contenuto .data.results all'array inizialmente vuoto (disc)
+          // Assegno il contenuto .data.results all'array inizialmente vuoto
           this.movies = result.data.results;
         })
         .catch((error) => {
           console.log(error);
         });
-    }
+    },
+
+    getTvShows: function(searchText) {
+      // Questa funzione viene chiamata quando avviene l'evento startSearch e riceve come parametro il testo che l'utente ha scritto nell'input
+      console.log(searchText);
+      // Faccio partire la chiamata axios
+      axios.get(this.apiUrlShows + searchText)
+        .then((result) => {
+          console.log(result.data.results);
+          // Assegno il contenuto .data.results all'array inizialmente vuoto
+          this.tvshows = result.data.results;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
   },
 
   // created() {
