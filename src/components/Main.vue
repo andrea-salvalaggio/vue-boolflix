@@ -3,8 +3,8 @@
         <!-- Stampami MovieElement tante volte quante sono gli elementi dentro movies -->
         <!-- Passo a MovieElement il singolo elemento di movies -->
         <!-- movies  è un array di oggetti, movie è un oggetto -->
-        <MovieElement v-for="(movie, index) in movies" :key="index" :movie="movie"/>
-        <TvShowElement v-for="(tvshow, index) in tvshows" :key="index" :tvshow="tvshow"/>
+        <MovieElement v-for="(movie, index) in movies" :key="movie.id" :movie="movie"/>
+        <TvShowElement v-for="(tvshow, index) in tvshows" :key="tvshows.id" :tvshow="tvshow"/>
     </div>
 </template>
 

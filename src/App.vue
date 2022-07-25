@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- App rimane in ascolto del segnale startSearch del componente Header e quando avviene richiamo la funzione getMovies -->
-    <Header @startSearch="getMovies"/>
+    <Header @startSearch="getAll"/>
     <!-- Passo i risultati a Main tramite props -->
     <Main :movies="movies" :tvshows="tvshows"/>
     
@@ -31,34 +31,54 @@ export default {
   },
 
   methods: {
-    getMovies: function(searchText) {
-      // Questa funzione viene chiamata quando avviene l'evento startSearch e riceve come parametro il testo che l'utente ha scritto nell'input
-      console.log(searchText);
-      // Faccio partire la chiamata axios
-      axios.get(this.apiUrlMovies + searchText)
-        .then((result) => {
-          console.log(result.data.results);
-          // Assegno il contenuto .data.results all'array inizialmente vuoto
-          this.movies = result.data.results;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
+    // getMovies: function(searchText) {
+    //   // Questa funzione viene chiamata quando avviene l'evento startSearch e riceve come parametro il testo che l'utente ha scritto nell'input
+    //   console.log(searchText);
+    //   // Faccio partire la chiamata axios
+    //   axios.get(this.apiUrlMovies + searchText)
+    //     .then((result) => {
+    //       console.log(result.data.results);
+    //       // Assegno il contenuto .data.results all'array inizialmente vuoto
+    //       this.movies = result.data.results;
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // },
 
-    getTvShows: function(searchText) {
-      // Questa funzione viene chiamata quando avviene l'evento startSearch e riceve come parametro il testo che l'utente ha scritto nell'input
-      console.log(searchText);
-      // Faccio partire la chiamata axios
+    // getTvShows: function(searchText) {
+    //   // Questa funzione viene chiamata quando avviene l'evento startSearch e riceve come parametro il testo che l'utente ha scritto nell'input
+    //   console.log(searchText);
+    //   // Faccio partire la chiamata axios
+    //   axios.get(this.apiUrlShows + searchText)
+    //     .then((result) => {
+    //       console.log(result.data.results);
+    //       // Assegno il contenuto .data.results all'array inizialmente vuoto
+    //       this.tvshows = result.data.results;
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // },
+
+    getAll: function(searchText) {
+      axios.get(this.apiUrlMovies + searchText)
+          .then((result) => {
+            console.log(result.data.results);
+            this.movies = result.data.results;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
       axios.get(this.apiUrlShows + searchText)
-        .then((result) => {
-          console.log(result.data.results);
-          // Assegno il contenuto .data.results all'array inizialmente vuoto
-          this.tvshows = result.data.results;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+          .then((result) => {
+            console.log(result.data.results);
+            this.tvshows = result.data.results;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     },
 
   },
